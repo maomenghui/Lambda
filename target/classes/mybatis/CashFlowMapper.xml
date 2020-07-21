@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.CashFlowMapper">
+    
+    <resultMap type="com.why.project.entity.CashFlow" id="CashFlowResult">
+        <result property="id"    column="id"    />
+        <result property="cfSdxj"    column="cf_sdxj"    />
+        <result property="cfSffh"    column="cf_sffh"    />
+        <result property="cfYgxj"    column="cf_ygxj"    />
+        <result property="cfJyxjxj"    column="cf_jyxjxj"    />
+        <result property="cfJyhdxj"    column="cf_jyhdxj"    />
+        <result property="cfZgzfxj"    column="cf_zgzfxj"    />
+        <result property="cfGxsf"    column="cf_gxsf"    />
+        <result property="cfZfhdxj"    column="cf_zfhdxj"    />
+        <result property="cfJylcxj"    column="cf_jylcxj"    />
+        <result property="cfJyxjje"    column="cf_jyxjje"    />
+        <result property="cfHstzxj"    column="cf_hstzxj"    />
+        <result property="cfQdsdxj"    column="cf_qdsdxj"    />
+        <result property="cfCqhsxj"    column="cf_cqhsxj"    />
+        <result property="cfCzhsxj"    column="cf_czhsxj"    />
+        <result property="cfSdygxj"    column="cf_sdygxj"    />
+        <result property="cfTzlrxj"    column="cf_tzlrxj"    />
+        <result property="cfGdzcxj"    column="cf_gdzcxj"    />
+        <result property="cfQdtzsyxj"    column="cf_qdtzsyxj"    />
+        <result property="cfZgszfxj"    column="cf_zgszfxj"    />
+        <result property="cfZftzhdxj"    column="cf_zftzhdxj"    />
+        <result property="cfTzhdlcxj"    column="cf_tzhdlcxj"    />
+        <result property="cfTzcsxjje"    column="cf_tzcsxjje"    />
+        <result property="cfXstzxj"    column="cf_xstzxj"    />
+        <result property="cfQdjkxj"    column="cf_qdjkxj"    />
+        <result property="cfSdqtxj"    column="cf_sdqtxj"    />
+        <result property="cfCzxjxj"    column="cf_czxjxj"    />
+        <result property="cfXstzsdxj"    column="cf_xstzsdxj"    />
+        <result property="cfFpglzfxj"    column="cf_fpglzfxj"    />
+        <result property="cfZfqtygxj"    column="cf_zfqtygxj"    />
+        <result property="cfZfqthdxj"    column="cf_zfqthdxj"    />
+        <result property="cfCzhdxjje"    column="cf_czhdxjje"    />
+        <result property="cfXjzje"    column="cf_xjzje"    />
+        <result property="cfXjdjwye"    column="cf_xjdjwye"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectCashFlowVo">
+        select id, cf_sdxj, cf_sffh, cf_ygxj, cf_jyxjxj, cf_jyhdxj, cf_zgzfxj, cf_gxsf, cf_zfhdxj, cf_jylcxj, cf_jyxjje, cf_hstzxj, cf_qdsdxj, cf_cqhsxj, cf_czhsxj, cf_sdygxj, cf_tzlrxj, cf_gdzcxj, cf_qdtzsyxj, cf_zgszfxj, cf_zftzhdxj, cf_tzhdlcxj, cf_tzcsxjje, cf_xstzxj, cf_qdjkxj, cf_sdqtxj, cf_czxjxj, cf_xstzsdxj, cf_fpglzfxj, cf_zfqtygxj, cf_zfqthdxj, cf_czhdxjje, cf_xjzje, cf_xjdjwye, cf_kjq, cf_kjnd from cash_flow_2020
+    </sql>
+
+    <select id="selectCashFlowList" parameterType="com.why.project.entity.CashFlow" resultMap="CashFlowResult">
+        <include refid="selectCashFlowVo"/>
+        <where>  
+            <if test="cfSdxj != null "> and cf_sdxj = #{cfSdxj}</if>
+            <if test="cfSffh != null "> and cf_sffh = #{cfSffh}</if>
+            <if test="cfYgxj != null "> and cf_ygxj = #{cfYgxj}</if>
+            <if test="cfJyxjxj != null "> and cf_jyxjxj = #{cfJyxjxj}</if>
+            <if test="cfJyhdxj != null "> and cf_jyhdxj = #{cfJyhdxj}</if>
+            <if test="cfZgzfxj != null "> and cf_zgzfxj = #{cfZgzfxj}</if>
+            <if test="cfGxsf != null "> and cf_gxsf = #{cfGxsf}</if>
+            <if test="cfZfhdxj != null "> and cf_zfhdxj = #{cfZfhdxj}</if>
+            <if test="cfJylcxj != null "> and cf_jylcxj = #{cfJylcxj}</if>
+            <if test="cfJyxjje != null "> and cf_jyxjje = #{cfJyxjje}</if>
+            <if test="cfHstzxj != null "> and cf_hstzxj = #{cfHstzxj}</if>
+            <if test="cfQdsdxj != null "> and cf_qdsdxj = #{cfQdsdxj}</if>
+            <if test="cfCqhsxj != null "> and cf_cqhsxj = #{cfCqhsxj}</if>
+            <if test="cfCzhsxj != null "> and cf_czhsxj = #{cfCzhsxj}</if>
+            <if test="cfSdygxj != null "> and cf_sdygxj = #{cfSdygxj}</if>
+            <if test="cfTzlrxj != null "> and cf_tzlrxj = #{cfTzlrxj}</if>
+            <if test="cfGdzcxj != null "> and cf_gdzcxj = #{cfGdzcxj}</if>
+            <if test="cfQdtzsyxj != null "> and cf_qdtzsyxj = #{cfQdtzsyxj}</if>
+            <if test="cfZgszfxj != null "> and cf_zgszfxj = #{cfZgszfxj}</if>
+            <if test="cfZftzhdxj != null "> and cf_zftzhdxj = #{cfZftzhdxj}</if>
+            <if test="cfTzhdlcxj != null "> and cf_tzhdlcxj = #{cfTzhdlcxj}</if>
+            <if test="cfTzcsxjje != null "> and cf_tzcsxjje = #{cfTzcsxjje}</if>
+            <if test="cfXstzxj != null "> and cf_xstzxj = #{cfXstzxj}</if>
+            <if test="cfQdjkxj != null "> and cf_qdjkxj = #{cfQdjkxj}</if>
+            <if test="cfSdqtxj != null "> and cf_sdqtxj = #{cfSdqtxj}</if>
+            <if test="cfCzxjxj != null "> and cf_czxjxj = #{cfCzxjxj}</if>
+            <if test="cfXstzsdxj != null "> and cf_xstzsdxj = #{cfXstzsdxj}</if>
+            <if test="cfFpglzfxj != null "> and cf_fpglzfxj = #{cfFpglzfxj}</if>
+            <if test="cfZfqtygxj != null "> and cf_zfqtygxj = #{cfZfqtygxj}</if>
+            <if test="cfZfqthdxj != null "> and cf_zfqthdxj = #{cfZfqthdxj}</if>
+            <if test="cfCzhdxjje != null "> and cf_czhdxjje = #{cfCzhdxjje}</if>
+            <if test="cfXjzje != null "> and cf_xjzje = #{cfXjzje}</if>
+            <if test="cfXjdjwye != null "> and cf_xjdjwye = #{cfXjdjwye}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectCashFlowById" parameterType="Long" resultMap="CashFlowResult">
+        <include refid="selectCashFlowVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCashFlow" parameterType="com.why.project.entity.CashFlow" useGeneratedKeys="true" keyProperty="id">
+        insert into cash_flow_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cfSdxj != null ">cf_sdxj,</if>
+            <if test="cfSffh != null ">cf_sffh,</if>
+            <if test="cfYgxj != null ">cf_ygxj,</if>
+            <if test="cfJyxjxj != null ">cf_jyxjxj,</if>
+            <if test="cfJyhdxj != null ">cf_jyhdxj,</if>
+            <if test="cfZgzfxj != null ">cf_zgzfxj,</if>
+            <if test="cfGxsf != null ">cf_gxsf,</if>
+            <if test="cfZfhdxj != null ">cf_zfhdxj,</if>
+            <if test="cfJylcxj != null ">cf_jylcxj,</if>
+            <if test="cfJyxjje != null ">cf_jyxjje,</if>
+            <if test="cfHstzxj != null ">cf_hstzxj,</if>
+            <if test="cfQdsdxj != null ">cf_qdsdxj,</if>
+            <if test="cfCqhsxj != null ">cf_cqhsxj,</if>
+            <if test="cfCzhsxj != null ">cf_czhsxj,</if>
+            <if test="cfSdygxj != null ">cf_sdygxj,</if>
+            <if test="cfTzlrxj != null ">cf_tzlrxj,</if>
+            <if test="cfGdzcxj != null ">cf_gdzcxj,</if>
+            <if test="cfQdtzsyxj != null ">cf_qdtzsyxj,</if>
+            <if test="cfZgszfxj != null ">cf_zgszfxj,</if>
+            <if test="cfZftzhdxj != null ">cf_zftzhdxj,</if>
+            <if test="cfTzhdlcxj != null ">cf_tzhdlcxj,</if>
+            <if test="cfTzcsxjje != null ">cf_tzcsxjje,</if>
+            <if test="cfXstzxj != null ">cf_xstzxj,</if>
+            <if test="cfQdjkxj != null ">cf_qdjkxj,</if>
+            <if test="cfSdqtxj != null ">cf_sdqtxj,</if>
+            <if test="cfCzxjxj != null ">cf_czxjxj,</if>
+            <if test="cfXstzsdxj != null ">cf_xstzsdxj,</if>
+            <if test="cfFpglzfxj != null ">cf_fpglzfxj,</if>
+            <if test="cfZfqtygxj != null ">cf_zfqtygxj,</if>
+            <if test="cfZfqthdxj != null ">cf_zfqthdxj,</if>
+            <if test="cfCzhdxjje != null ">cf_czhdxjje,</if>
+            <if test="cfXjzje != null ">cf_xjzje,</if>
+            <if test="cfXjdjwye != null ">cf_xjdjwye,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cfSdxj != null ">#{cfSdxj},</if>
+            <if test="cfSffh != null ">#{cfSffh},</if>
+            <if test="cfYgxj != null ">#{cfYgxj},</if>
+            <if test="cfJyxjxj != null ">#{cfJyxjxj},</if>
+            <if test="cfJyhdxj != null ">#{cfJyhdxj},</if>
+            <if test="cfZgzfxj != null ">#{cfZgzfxj},</if>
+            <if test="cfGxsf != null ">#{cfGxsf},</if>
+            <if test="cfZfhdxj != null ">#{cfZfhdxj},</if>
+            <if test="cfJylcxj != null ">#{cfJylcxj},</if>
+            <if test="cfJyxjje != null ">#{cfJyxjje},</if>
+            <if test="cfHstzxj != null ">#{cfHstzxj},</if>
+            <if test="cfQdsdxj != null ">#{cfQdsdxj},</if>
+            <if test="cfCqhsxj != null ">#{cfCqhsxj},</if>
+            <if test="cfCzhsxj != null ">#{cfCzhsxj},</if>
+            <if test="cfSdygxj != null ">#{cfSdygxj},</if>
+            <if test="cfTzlrxj != null ">#{cfTzlrxj},</if>
+            <if test="cfGdzcxj != null ">#{cfGdzcxj},</if>
+            <if test="cfQdtzsyxj != null ">#{cfQdtzsyxj},</if>
+            <if test="cfZgszfxj != null ">#{cfZgszfxj},</if>
+            <if test="cfZftzhdxj != null ">#{cfZftzhdxj},</if>
+            <if test="cfTzhdlcxj != null ">#{cfTzhdlcxj},</if>
+            <if test="cfTzcsxjje != null ">#{cfTzcsxjje},</if>
+            <if test="cfXstzxj != null ">#{cfXstzxj},</if>
+            <if test="cfQdjkxj != null ">#{cfQdjkxj},</if>
+            <if test="cfSdqtxj != null ">#{cfSdqtxj},</if>
+            <if test="cfCzxjxj != null ">#{cfCzxjxj},</if>
+            <if test="cfXstzsdxj != null ">#{cfXstzsdxj},</if>
+            <if test="cfFpglzfxj != null ">#{cfFpglzfxj},</if>
+            <if test="cfZfqtygxj != null ">#{cfZfqtygxj},</if>
+            <if test="cfZfqthdxj != null ">#{cfZfqthdxj},</if>
+            <if test="cfCzhdxjje != null ">#{cfCzhdxjje},</if>
+            <if test="cfXjzje != null ">#{cfXjzje},</if>
+            <if test="cfXjdjwye != null ">#{cfXjdjwye},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCashFlow" parameterType="com.why.project.entity.CashFlow">
+        update cash_flow_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cfSdxj != null ">cf_sdxj = #{cfSdxj},</if>
+            <if test="cfSffh != null ">cf_sffh = #{cfSffh},</if>
+            <if test="cfYgxj != null ">cf_ygxj = #{cfYgxj},</if>
+            <if test="cfJyxjxj != null ">cf_jyxjxj = #{cfJyxjxj},</if>
+            <if test="cfJyhdxj != null ">cf_jyhdxj = #{cfJyhdxj},</if>
+            <if test="cfZgzfxj != null ">cf_zgzfxj = #{cfZgzfxj},</if>
+            <if test="cfGxsf != null ">cf_gxsf = #{cfGxsf},</if>
+            <if test="cfZfhdxj != null ">cf_zfhdxj = #{cfZfhdxj},</if>
+            <if test="cfJylcxj != null ">cf_jylcxj = #{cfJylcxj},</if>
+            <if test="cfJyxjje != null ">cf_jyxjje = #{cfJyxjje},</if>
+            <if test="cfHstzxj != null ">cf_hstzxj = #{cfHstzxj},</if>
+            <if test="cfQdsdxj != null ">cf_qdsdxj = #{cfQdsdxj},</if>
+            <if test="cfCqhsxj != null ">cf_cqhsxj = #{cfCqhsxj},</if>
+            <if test="cfCzhsxj != null ">cf_czhsxj = #{cfCzhsxj},</if>
+            <if test="cfSdygxj != null ">cf_sdygxj = #{cfSdygxj},</if>
+            <if test="cfTzlrxj != null ">cf_tzlrxj = #{cfTzlrxj},</if>
+            <if test="cfGdzcxj != null ">cf_gdzcxj = #{cfGdzcxj},</if>
+            <if test="cfQdtzsyxj != null ">cf_qdtzsyxj = #{cfQdtzsyxj},</if>
+            <if test="cfZgszfxj != null ">cf_zgszfxj = #{cfZgszfxj},</if>
+            <if test="cfZftzhdxj != null ">cf_zftzhdxj = #{cfZftzhdxj},</if>
+            <if test="cfTzhdlcxj != null ">cf_tzhdlcxj = #{cfTzhdlcxj},</if>
+            <if test="cfTzcsxjje != null ">cf_tzcsxjje = #{cfTzcsxjje},</if>
+            <if test="cfXstzxj != null ">cf_xstzxj = #{cfXstzxj},</if>
+            <if test="cfQdjkxj != null ">cf_qdjkxj = #{cfQdjkxj},</if>
+            <if test="cfSdqtxj != null ">cf_sdqtxj = #{cfSdqtxj},</if>
+            <if test="cfCzxjxj != null ">cf_czxjxj = #{cfCzxjxj},</if>
+            <if test="cfXstzsdxj != null ">cf_xstzsdxj = #{cfXstzsdxj},</if>
+            <if test="cfFpglzfxj != null ">cf_fpglzfxj = #{cfFpglzfxj},</if>
+            <if test="cfZfqtygxj != null ">cf_zfqtygxj = #{cfZfqtygxj},</if>
+            <if test="cfZfqthdxj != null ">cf_zfqthdxj = #{cfZfqthdxj},</if>
+            <if test="cfCzhdxjje != null ">cf_czhdxjje = #{cfCzhdxjje},</if>
+            <if test="cfXjzje != null ">cf_xjzje = #{cfXjzje},</if>
+            <if test="cfXjdjwye != null ">cf_xjdjwye = #{cfXjdjwye},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCashFlowById" parameterType="com.why.project.entity.CashFlow">
+        delete from cash_flow_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deleteCashFlowByIds" parameterType="String">
+        delete from cash_flow_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

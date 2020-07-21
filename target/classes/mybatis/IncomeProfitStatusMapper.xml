@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.IncomeProfitStatusMapper">
+    
+    <resultMap type="com.why.project.entity.IncomeProfitStatus" id="IncomeProfitStatusResult">
+        <result property="id"    column="id"    />
+        <result property="ipsYysr"    column="ips_yysr"    />
+        <result property="ipsYhcpsr"    column="ips_yhcpsr"    />
+        <result property="ipsYycb"    column="ips_yycb"    />
+        <result property="ipsYhcpcb"    column="ips_yhcpcb"    />
+        <result property="ipsSjjfj"    column="ips_sjjfj"    />
+        <result property="ipsGlfy"    column="ips_glfy"    />
+        <result property="ipsYwzdf"    column="ips_ywzdf"    />
+        <result property="ipsClfy"    column="ips_clfy"    />
+        <result property="ipsBgf"    column="ips_bgf"    />
+        <result property="ipsCwfy"    column="ips_cwfy"    />
+        <result property="ipsLxzc"    column="ips_lxzc"    />
+        <result property="ipsLxsr"    column="ips_lxsr"    />
+        <result property="ipsTzsy"    column="ips_tzsy"    />
+        <result property="ipsQtsr"    column="ips_qtsr"    />
+        <result property="ipsYylr"    column="ips_yylr"    />
+        <result property="ipsYywsr"    column="ips_yywsr"    />
+        <result property="ipsYywzc"    column="ips_yywzc"    />
+        <result property="ipsLrze"    column="ips_lrze"    />
+        <result property="ipsGsymgslr"    column="ips_gsymgslr"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectIncomeProfitStatusVo">
+        select id, ips_yysr, ips_yhcpsr, ips_yycb, ips_yhcpcb, ips_sjjfj, ips_glfy, ips_ywzdf, ips_clfy, ips_bgf, ips_cwfy, ips_lxzc, ips_lxsr, ips_tzsy, ips_qtsr, ips_yylr, ips_yywsr, ips_yywzc, ips_lrze, ips_gsymgslr, cf_kjq, cf_kjnd from income_profit_status_2020
+    </sql>
+
+    <select id="selectIncomeProfitStatusList" parameterType="com.why.project.entity.IncomeProfitStatus" resultMap="IncomeProfitStatusResult">
+        <include refid="selectIncomeProfitStatusVo"/>
+        <where>  
+            <if test="ipsYysr != null "> and ips_yysr = #{ipsYysr}</if>
+            <if test="ipsYhcpsr != null "> and ips_yhcpsr = #{ipsYhcpsr}</if>
+            <if test="ipsYycb != null "> and ips_yycb = #{ipsYycb}</if>
+            <if test="ipsYhcpcb != null "> and ips_yhcpcb = #{ipsYhcpcb}</if>
+            <if test="ipsSjjfj != null "> and ips_sjjfj = #{ipsSjjfj}</if>
+            <if test="ipsGlfy != null "> and ips_glfy = #{ipsGlfy}</if>
+            <if test="ipsYwzdf != null "> and ips_ywzdf = #{ipsYwzdf}</if>
+            <if test="ipsClfy != null "> and ips_clfy = #{ipsClfy}</if>
+            <if test="ipsBgf != null "> and ips_bgf = #{ipsBgf}</if>
+            <if test="ipsCwfy != null "> and ips_cwfy = #{ipsCwfy}</if>
+            <if test="ipsLxzc != null "> and ips_lxzc = #{ipsLxzc}</if>
+            <if test="ipsLxsr != null "> and ips_lxsr = #{ipsLxsr}</if>
+            <if test="ipsTzsy != null "> and ips_tzsy = #{ipsTzsy}</if>
+            <if test="ipsQtsr != null "> and ips_qtsr = #{ipsQtsr}</if>
+            <if test="ipsYylr != null "> and ips_yylr = #{ipsYylr}</if>
+            <if test="ipsYywsr != null "> and ips_yywsr = #{ipsYywsr}</if>
+            <if test="ipsYywzc != null "> and ips_yywzc = #{ipsYywzc}</if>
+            <if test="ipsLrze != null "> and ips_lrze = #{ipsLrze}</if>
+            <if test="ipsGsymgslr != null "> and ips_gsymgslr = #{ipsGsymgslr}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectIncomeProfitStatusById" parameterType="Long" resultMap="IncomeProfitStatusResult">
+        <include refid="selectIncomeProfitStatusVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertIncomeProfitStatus" parameterType="com.why.project.entity.IncomeProfitStatus" useGeneratedKeys="true" keyProperty="id">
+        insert into income_profit_status_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ipsYysr != null ">ips_yysr,</if>
+            <if test="ipsYhcpsr != null ">ips_yhcpsr,</if>
+            <if test="ipsYycb != null ">ips_yycb,</if>
+            <if test="ipsYhcpcb != null ">ips_yhcpcb,</if>
+            <if test="ipsSjjfj != null ">ips_sjjfj,</if>
+            <if test="ipsGlfy != null ">ips_glfy,</if>
+            <if test="ipsYwzdf != null ">ips_ywzdf,</if>
+            <if test="ipsClfy != null ">ips_clfy,</if>
+            <if test="ipsBgf != null ">ips_bgf,</if>
+            <if test="ipsCwfy != null ">ips_cwfy,</if>
+            <if test="ipsLxzc != null ">ips_lxzc,</if>
+            <if test="ipsLxsr != null ">ips_lxsr,</if>
+            <if test="ipsTzsy != null ">ips_tzsy,</if>
+            <if test="ipsQtsr != null ">ips_qtsr,</if>
+            <if test="ipsYylr != null ">ips_yylr,</if>
+            <if test="ipsYywsr != null ">ips_yywsr,</if>
+            <if test="ipsYywzc != null ">ips_yywzc,</if>
+            <if test="ipsLrze != null ">ips_lrze,</if>
+            <if test="ipsGsymgslr != null ">ips_gsymgslr,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ipsYysr != null ">#{ipsYysr},</if>
+            <if test="ipsYhcpsr != null ">#{ipsYhcpsr},</if>
+            <if test="ipsYycb != null ">#{ipsYycb},</if>
+            <if test="ipsYhcpcb != null ">#{ipsYhcpcb},</if>
+            <if test="ipsSjjfj != null ">#{ipsSjjfj},</if>
+            <if test="ipsGlfy != null ">#{ipsGlfy},</if>
+            <if test="ipsYwzdf != null ">#{ipsYwzdf},</if>
+            <if test="ipsClfy != null ">#{ipsClfy},</if>
+            <if test="ipsBgf != null ">#{ipsBgf},</if>
+            <if test="ipsCwfy != null ">#{ipsCwfy},</if>
+            <if test="ipsLxzc != null ">#{ipsLxzc},</if>
+            <if test="ipsLxsr != null ">#{ipsLxsr},</if>
+            <if test="ipsTzsy != null ">#{ipsTzsy},</if>
+            <if test="ipsQtsr != null ">#{ipsQtsr},</if>
+            <if test="ipsYylr != null ">#{ipsYylr},</if>
+            <if test="ipsYywsr != null ">#{ipsYywsr},</if>
+            <if test="ipsYywzc != null ">#{ipsYywzc},</if>
+            <if test="ipsLrze != null ">#{ipsLrze},</if>
+            <if test="ipsGsymgslr != null ">#{ipsGsymgslr},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateIncomeProfitStatus" parameterType="com.why.project.entity.IncomeProfitStatus">
+        update income_profit_status_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ipsYysr != null ">ips_yysr = #{ipsYysr},</if>
+            <if test="ipsYhcpsr != null ">ips_yhcpsr = #{ipsYhcpsr},</if>
+            <if test="ipsYycb != null ">ips_yycb = #{ipsYycb},</if>
+            <if test="ipsYhcpcb != null ">ips_yhcpcb = #{ipsYhcpcb},</if>
+            <if test="ipsSjjfj != null ">ips_sjjfj = #{ipsSjjfj},</if>
+            <if test="ipsGlfy != null ">ips_glfy = #{ipsGlfy},</if>
+            <if test="ipsYwzdf != null ">ips_ywzdf = #{ipsYwzdf},</if>
+            <if test="ipsClfy != null ">ips_clfy = #{ipsClfy},</if>
+            <if test="ipsBgf != null ">ips_bgf = #{ipsBgf},</if>
+            <if test="ipsCwfy != null ">ips_cwfy = #{ipsCwfy},</if>
+            <if test="ipsLxzc != null ">ips_lxzc = #{ipsLxzc},</if>
+            <if test="ipsLxsr != null ">ips_lxsr = #{ipsLxsr},</if>
+            <if test="ipsTzsy != null ">ips_tzsy = #{ipsTzsy},</if>
+            <if test="ipsQtsr != null ">ips_qtsr = #{ipsQtsr},</if>
+            <if test="ipsYylr != null ">ips_yylr = #{ipsYylr},</if>
+            <if test="ipsYywsr != null ">ips_yywsr = #{ipsYywsr},</if>
+            <if test="ipsYywzc != null ">ips_yywzc = #{ipsYywzc},</if>
+            <if test="ipsLrze != null ">ips_lrze = #{ipsLrze},</if>
+            <if test="ipsGsymgslr != null ">ips_gsymgslr = #{ipsGsymgslr},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteIncomeProfitStatusById" parameterType="com.why.project.entity.IncomeProfitStatus">
+        delete from income_profit_status_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deleteIncomeProfitStatusByIds" parameterType="String">
+        delete from income_profit_status_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

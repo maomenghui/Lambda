@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.AssetLiabilityMapper">
+    
+    <resultMap type="com.why.project.entity.AssetLiability" id="AssetLiabilityResult">
+        <result property="id"    column="id"    />
+        <result property="alYjsf"    column="al_yjsf"    />
+        <result property="alDqjk"    column="al_dqjk"    />
+        <result property="alCzbzjz"    column="al_czbzjz"    />
+        <result property="alWxzc"    column="al_wxzc"    />
+        <result property="alYjgkk"    column="al_yjgkk"    />
+        <result property="alBrkyf"    column="al_brkyf"    />
+        <result property="alFldfz"    column="al_fldfz"    />
+        <result property="alJzc"    column="al_jzc"    />
+        <result property="alQtldfz"    column="al_qtldfz"    />
+        <result property="alYfzk"    column="al_yfzk"    />
+        <result property="alYszk"    column="al_yszk"    />
+        <result property="alQtyfk"    column="al_qtyfk"    />
+        <result property="alFldzcjj"    column="al_fldzcjj"    />
+        <result property="alCqtz"    column="al_cqtz"    />
+        <result property="alZyjj"    column="al_zyjj"    />
+        <result property="alGdzc"    column="al_gdzc"    />
+        <result property="alZjgc"    column="al_zjgc"    />
+        <result property="alYfzgxc"    column="al_yfzgxc"    />
+        <result property="alJyjy"    column="al_jyjy"    />
+        <result property="alBrzk"    column="al_brzk"    />
+        <result property="alSyjy"    column="al_syjy"    />
+        <result property="alYfpj"    column="al_yfpj"    />
+        <result property="alCzbzjy"    column="al_czbzjy"    />
+        <result property="alFzjzczj"    column="al_fzjzczj"    />
+        <result property="alKjq"    column="al_kjq"    />
+        <result property="alKjnd"    column="al_kjnd"    />
+    </resultMap>
+
+    <sql id="selectAssetLiabilityVo">
+        select id, al_yjsf, al_dqjk, al_czbzjz, al_wxzc, al_yjgkk, al_brkyf, al_fldfz, al_jzc, al_qtldfz, al_yfzk, al_yszk,
+        al_qtyfk, al_fldzcjj, al_cqtz, al_zyjj, al_gdzc, al_zjgc, al_yfzgxc, al_jyjy, al_brzk, al_syjy, al_yfpj,
+        al_czbzjy, al_fzjzczj, al_kjq, al_kjnd  from asset_liability_2020
+    </sql>
+
+    <select id="selectAssetLiabilityList" parameterType="com.why.project.entity.AssetLiability" resultMap="AssetLiabilityResult">
+        <include refid="selectAssetLiabilityVo"/>
+        <where>  
+            <if test="alKjq != null and alKjq != ''"> and al_kjq = #{alYjsf}</if>
+            <if test="alKjnd != null and alKjnd != ''"> and al_kjnd = #{alDqjk}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetLiabilityById" parameterType="Long" resultMap="AssetLiabilityResult">
+        <include refid="selectAssetLiabilityVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertAssetLiability" parameterType="com.why.project.entity.AssetLiability" useGeneratedKeys="true" keyProperty="id">
+        insert into asset_liability_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alYjsf != null ">al_yjsf,</if>
+            <if test="alDqjk != null ">al_dqjk,</if>
+            <if test="alCzbzjz != null ">al_czbzjz,</if>
+            <if test="alWxzc != null ">al_wxzc,</if>
+            <if test="alYjgkk != null ">al_yjgkk,</if>
+            <if test="alBrkyf != null ">al_brkyf,</if>
+            <if test="alFldfz != null ">al_fldfz,</if>
+            <if test="alJzc != null ">al_jzc,</if>
+            <if test="alQtldfz != null ">al_qtldfz,</if>
+            <if test="alYfzk != null ">al_yfzk,</if>
+            <if test="alYszk != null ">al_yszk,</if>
+            <if test="alQtyfk != null ">al_qtyfk,</if>
+            <if test="alFldzcjj != null ">al_fldzcjj,</if>
+            <if test="alCqtz != null ">al_cqtz,</if>
+            <if test="alZyjj != null ">al_zyjj,</if>
+            <if test="alGdzc != null ">al_gdzc,</if>
+            <if test="alZjgc != null ">al_zjgc,</if>
+            <if test="alYfzgxc != null ">al_yfzgxc,</if>
+            <if test="alJyjy != null ">al_jyjy,</if>
+            <if test="alBrzk != null ">al_brzk,</if>
+            <if test="alSyjy != null ">al_syjy,</if>
+            <if test="alYfpj != null ">al_yfpj,</if>
+            <if test="alCzbzjy != null ">al_czbzjy,</if>
+            <if test="alFzjzczj != null ">al_fzjzczj,</if>
+            <if test="alKjq != null ">al_kjq,</if>
+            <if test="alKjnd != null ">al_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alYjsf != null ">#{alYjsf},</if>
+            <if test="alDqjk != null ">#{alDqjk},</if>
+            <if test="alCzbzjz != null ">#{alCzbzjz},</if>
+            <if test="alWxzc != null ">#{alWxzc},</if>
+            <if test="alYjgkk != null ">#{alYjgkk},</if>
+            <if test="alBrkyf != null ">#{alBrkyf},</if>
+            <if test="alFldfz != null ">#{alFldfz},</if>
+            <if test="alJzc != null ">#{alJzc},</if>
+            <if test="alQtldfz != null ">#{alQtldfz},</if>
+            <if test="alYfzk != null ">#{alYfzk},</if>
+            <if test="alYszk != null ">#{alYszk},</if>
+            <if test="alQtyfk != null ">#{alQtyfk},</if>
+            <if test="alFldzcjj != null ">#{alFldzcjj},</if>
+            <if test="alCqtz != null ">#{alCqtz},</if>
+            <if test="alZyjj != null ">#{alZyjj},</if>
+            <if test="alGdzc != null ">#{alGdzc},</if>
+            <if test="alZjgc != null ">#{alZjgc},</if>
+            <if test="alYfzgxc != null ">#{alYfzgxc},</if>
+            <if test="alJyjy != null ">#{alJyjy},</if>
+            <if test="alBrzk != null ">#{alBrzk},</if>
+            <if test="alSyjy != null ">#{alSyjy},</if>
+            <if test="alYfpj != null ">#{alYfpj},</if>
+            <if test="alCzbzjy != null ">#{alCzbzjy},</if>
+            <if test="alFzjzczj != null ">#{alFzjzczj},</if>
+            <if test="alKjq != null and  alKjq != ''">#{alKjq},</if>
+            <if test="alKjnd != null and alKjnd != ''">#{alKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetLiability" parameterType="com.why.project.entity.AssetLiability">
+        update asset_liability_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="alYjsf != null ">al_yjsf = #{alYjsf},</if>
+            <if test="alDqjk != null ">al_dqjk = #{alDqjk},</if>
+            <if test="alCzbzjz != null ">al_czbzjz = #{alCzbzjz},</if>
+            <if test="alWxzc != null ">al_wxzc = #{alWxzc},</if>
+            <if test="alYjgkk != null ">al_yjgkk = #{alYjgkk},</if>
+            <if test="alBrkyf != null ">al_brkyf = #{alBrkyf},</if>
+            <if test="alFldfz != null ">al_fldfz = #{alFldfz},</if>
+            <if test="alJzc != null ">al_jzc = #{alJzc},</if>
+            <if test="alQtldfz != null ">al_qtldfz = #{alQtldfz},</if>
+            <if test="alYfzk != null ">al_yfzk = #{alYfzk},</if>
+            <if test="alYszk != null ">al_yszk = #{alYszk},</if>
+            <if test="alQtyfk != null ">al_qtyfk = #{alQtyfk},</if>
+            <if test="alFldzcjj != null ">al_fldzcjj = #{alFldzcjj},</if>
+            <if test="alCqtz != null ">al_cqtz = #{alCqtz},</if>
+            <if test="alZyjj != null ">al_zyjj = #{alZyjj},</if>
+            <if test="alGdzc != null ">al_gdzc = #{alGdzc},</if>
+            <if test="alZjgc != null ">al_zjgc = #{alZjgc},</if>
+            <if test="alYfzgxc != null ">al_yfzgxc = #{alYfzgxc},</if>
+            <if test="alJyjy != null ">al_jyjy = #{alJyjy},</if>
+            <if test="alBrzk != null ">al_brzk = #{alBrzk},</if>
+            <if test="alSyjy != null ">al_syjy = #{alSyjy},</if>
+            <if test="alYfpj != null ">al_yfpj = #{alYfpj},</if>
+            <if test="alCzbzjy != null ">al_czbzjy = #{alCzbzjy},</if>
+            <if test="alFzjzczj != null ">al_fzjzczj = #{alFzjzczj},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAssetLiabilityById" parameterType="com.why.project.entity.AssetLiability">
+        delete from asset_liability_2020
+        where  al_kjq = #{alYjsf}
+        and al_kjnd = #{alDqjk}
+    </delete>
+
+    <delete id="deleteAssetLiabilityByIds" parameterType="String">
+        delete from asset_liability_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

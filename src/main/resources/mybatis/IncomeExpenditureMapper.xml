@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.IncomeExpenditureMapper">
+    
+    <resultMap type="com.why.project.entity.IncomeExpenditure" id="IncomeExpenditureResult">
+        <result property="id"    column="id"    />
+        <result property="ieCzbzzc"    column="ie_czbzzc"    />
+        <result property="ieCzbzsr"    column="ie_czbzsr"    />
+        <result property="ieBqczbz"    column="ie_bqczbz"    />
+        <result property="ieCzbzjz"    column="ie_czbzjz"    />
+        <result property="ieCzbzjy"    column="ie_czbzjy"    />
+        <result property="ieKysr"    column="ie_kysr"    />
+        <result property="ieKycb"    column="ie_kycb"    />
+        <result property="ieKyjy"    column="ie_kyjy"    />
+        <result property="ieQtywsr"    column="ie_qtywsr"    />
+        <result property="ieQtywcb"    column="ie_qtywcb"    />
+        <result property="ieQtywsj"    column="ie_qtywsj"    />
+        <result property="ieQtywjy"    column="ie_qtywjy"    />
+        <result property="ieQtsr"    column="ie_qtsr"    />
+        <result property="ieQtzc"    column="ie_qtzc"    />
+        <result property="ieCzbzjzjy"    column="ie_czbzjzjy"    />
+        <result property="ieSyjy"    column="ie_syjy"    />
+        <result property="ieFczbzjy"    column="ie_fczbzjy"    />
+        <result property="ieKfpfczjy"    column="ie_kfpfczjy"    />
+        <result property="ieYjjy"    column="ie_yjjy"    />
+        <result property="ieTqzyjj"    column="ie_tqzyjj"    />
+        <result property="ieZrsyjj"    column="ie_zrsyjj"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectIncomeExpenditureVo">
+        select id, ie_czbzzc, ie_czbzsr, ie_bqczbz, ie_czbzjz, ie_czbzjy, ie_kysr, ie_kycb, ie_kyjy,
+        ie_qtywsr, ie_qtywcb, ie_qtywsj, ie_qtywjy, ie_qtsr, ie_qtzc, ie_czbzjzjy, ie_syjy, ie_fczbzjy,
+         ie_kfpfczjy, ie_yjjy, ie_tqzyjj, ie_zrsyjj, cf_kjq, cf_kjnd from income_expenditure_2020
+    </sql>
+
+    <select id="selectIncomeExpenditureList" parameterType="com.why.project.entity.IncomeExpenditure" resultMap="IncomeExpenditureResult">
+        <include refid="selectIncomeExpenditureVo"/>
+        <where>  
+            <if test="ieCzbzzc != null "> and ie_czbzzc = #{ieCzbzzc}</if>
+            <if test="ieCzbzsr != null "> and ie_czbzsr = #{ieCzbzsr}</if>
+            <if test="ieBqczbz != null "> and ie_bqczbz = #{ieBqczbz}</if>
+            <if test="ieCzbzjz != null "> and ie_czbzjz = #{ieCzbzjz}</if>
+            <if test="ieCzbzjy != null "> and ie_czbzjy = #{ieCzbzjy}</if>
+            <if test="ieKysr != null "> and ie_kysr = #{ieKysr}</if>
+            <if test="ieKycb != null "> and ie_kycb = #{ieKycb}</if>
+            <if test="ieKyjy != null "> and ie_kyjy = #{ieKyjy}</if>
+            <if test="ieQtywsr != null "> and ie_qtywsr = #{ieQtywsr}</if>
+            <if test="ieQtywcb != null "> and ie_qtywcb = #{ieQtywcb}</if>
+            <if test="ieQtywsj != null "> and ie_qtywsj = #{ieQtywsj}</if>
+            <if test="ieQtywjy != null "> and ie_qtywjy = #{ieQtywjy}</if>
+            <if test="ieQtsr != null "> and ie_qtsr = #{ieQtsr}</if>
+            <if test="ieQtzc != null "> and ie_qtzc = #{ieQtzc}</if>
+            <if test="ieCzbzjzjy != null "> and ie_czbzjzjy = #{ieCzbzjzjy}</if>
+            <if test="ieSyjy != null "> and ie_syjy = #{ieSyjy}</if>
+            <if test="ieFczbzjy != null "> and ie_fczbzjy = #{ieFczbzjy}</if>
+            <if test="ieKfpfczjy != null "> and ie_kfpfczjy = #{ieKfpfczjy}</if>
+            <if test="ieYjjy != null "> and ie_yjjy = #{ieYjjy}</if>
+            <if test="ieTqzyjj != null "> and ie_tqzyjj = #{ieTqzyjj}</if>
+            <if test="ieZrsyjj != null "> and ie_zrsyjj = #{ieZrsyjj}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectIncomeExpenditureById" parameterType="Long" resultMap="IncomeExpenditureResult">
+        <include refid="selectIncomeExpenditureVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertIncomeExpenditure" parameterType="com.why.project.entity.IncomeExpenditure" useGeneratedKeys="true" keyProperty="id">
+        insert into income_expenditure_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ieCzbzzc != null ">ie_czbzzc,</if>
+            <if test="ieCzbzsr != null ">ie_czbzsr,</if>
+            <if test="ieBqczbz != null ">ie_bqczbz,</if>
+            <if test="ieCzbzjz != null ">ie_czbzjz,</if>
+            <if test="ieCzbzjy != null ">ie_czbzjy,</if>
+            <if test="ieKysr != null ">ie_kysr,</if>
+            <if test="ieKycb != null ">ie_kycb,</if>
+            <if test="ieKyjy != null ">ie_kyjy,</if>
+            <if test="ieQtywsr != null ">ie_qtywsr,</if>
+            <if test="ieQtywcb != null ">ie_qtywcb,</if>
+            <if test="ieQtywsj != null ">ie_qtywsj,</if>
+            <if test="ieQtywjy != null ">ie_qtywjy,</if>
+            <if test="ieQtsr != null ">ie_qtsr,</if>
+            <if test="ieQtzc != null ">ie_qtzc,</if>
+            <if test="ieCzbzjzjy != null ">ie_czbzjzjy,</if>
+            <if test="ieSyjy != null ">ie_syjy,</if>
+            <if test="ieFczbzjy != null ">ie_fczbzjy,</if>
+            <if test="ieKfpfczjy != null ">ie_kfpfczjy,</if>
+            <if test="ieYjjy != null ">ie_yjjy,</if>
+            <if test="ieTqzyjj != null ">ie_tqzyjj,</if>
+            <if test="ieZrsyjj != null ">ie_zrsyjj,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ieCzbzzc != null ">#{ieCzbzzc},</if>
+            <if test="ieCzbzsr != null ">#{ieCzbzsr},</if>
+            <if test="ieBqczbz != null ">#{ieBqczbz},</if>
+            <if test="ieCzbzjz != null ">#{ieCzbzjz},</if>
+            <if test="ieCzbzjy != null ">#{ieCzbzjy},</if>
+            <if test="ieKysr != null ">#{ieKysr},</if>
+            <if test="ieKycb != null ">#{ieKycb},</if>
+            <if test="ieKyjy != null ">#{ieKyjy},</if>
+            <if test="ieQtywsr != null ">#{ieQtywsr},</if>
+            <if test="ieQtywcb != null ">#{ieQtywcb},</if>
+            <if test="ieQtywsj != null ">#{ieQtywsj},</if>
+            <if test="ieQtywjy != null ">#{ieQtywjy},</if>
+            <if test="ieQtsr != null ">#{ieQtsr},</if>
+            <if test="ieQtzc != null ">#{ieQtzc},</if>
+            <if test="ieCzbzjzjy != null ">#{ieCzbzjzjy},</if>
+            <if test="ieSyjy != null ">#{ieSyjy},</if>
+            <if test="ieFczbzjy != null ">#{ieFczbzjy},</if>
+            <if test="ieKfpfczjy != null ">#{ieKfpfczjy},</if>
+            <if test="ieYjjy != null ">#{ieYjjy},</if>
+            <if test="ieTqzyjj != null ">#{ieTqzyjj},</if>
+            <if test="ieZrsyjj != null ">#{ieZrsyjj},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateIncomeExpenditure" parameterType="com.why.project.entity.IncomeExpenditure">
+        update income_expenditure_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ieCzbzzc != null ">ie_czbzzc = #{ieCzbzzc},</if>
+            <if test="ieCzbzsr != null ">ie_czbzsr = #{ieCzbzsr},</if>
+            <if test="ieBqczbz != null ">ie_bqczbz = #{ieBqczbz},</if>
+            <if test="ieCzbzjz != null ">ie_czbzjz = #{ieCzbzjz},</if>
+            <if test="ieCzbzjy != null ">ie_czbzjy = #{ieCzbzjy},</if>
+            <if test="ieKysr != null ">ie_kysr = #{ieKysr},</if>
+            <if test="ieKycb != null ">ie_kycb = #{ieKycb},</if>
+            <if test="ieKyjy != null ">ie_kyjy = #{ieKyjy},</if>
+            <if test="ieQtywsr != null ">ie_qtywsr = #{ieQtywsr},</if>
+            <if test="ieQtywcb != null ">ie_qtywcb = #{ieQtywcb},</if>
+            <if test="ieQtywsj != null ">ie_qtywsj = #{ieQtywsj},</if>
+            <if test="ieQtywjy != null ">ie_qtywjy = #{ieQtywjy},</if>
+            <if test="ieQtsr != null ">ie_qtsr = #{ieQtsr},</if>
+            <if test="ieQtzc != null ">ie_qtzc = #{ieQtzc},</if>
+            <if test="ieCzbzjzjy != null ">ie_czbzjzjy = #{ieCzbzjzjy},</if>
+            <if test="ieSyjy != null ">ie_syjy = #{ieSyjy},</if>
+            <if test="ieFczbzjy != null ">ie_fczbzjy = #{ieFczbzjy},</if>
+            <if test="ieKfpfczjy != null ">ie_kfpfczjy = #{ieKfpfczjy},</if>
+            <if test="ieYjjy != null ">ie_yjjy = #{ieYjjy},</if>
+            <if test="ieTqzyjj != null ">ie_tqzyjj = #{ieTqzyjj},</if>
+            <if test="ieZrsyjj != null ">ie_zrsyjj = #{ieZrsyjj},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteIncomeExpenditureById" parameterType="com.why.project.entity.IncomeExpenditure">
+        delete from income_expenditure_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deleteIncomeExpenditureByIds" parameterType="String">
+        delete from income_expenditure_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

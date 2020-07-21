@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.ProfitMapper">
+    <resultMap type="com.why.project.entity.Profit" id="ProfitResult">
+        <result property="id"    column="id"    />
+        <result property="pYyzsr"    column="p_yyzsr"    />
+        <result property="pYysr"    column="p_yysr"    />
+        <result property="pYyzcb"    column="p_yyzcb"    />
+        <result property="pYycb"    column="p_yycb"    />
+        <result property="pClf"    column="p_clf"    />
+        <result property="pWxf"    column="p_wxf"    />
+        <result property="pSjjfj"    column="p_sjjfj"    />
+        <result property="pGlfy"    column="p_glfy"    />
+        <result property="pBgf"    column="p_bgf"    />
+        <result property="pHyf"    column="p_hyf"    />
+        <result property="pYwzdf"    column="p_ywzdf"    />
+        <result property="pClfy"    column="p_clfy"    />
+        <result property="pLxfy"    column="p_lxfy"    />
+        <result property="pLxsr"    column="p_lxsr"    />
+        <result property="pCwfy"    column="p_cwfy"    />
+        <result property="pQtsy"    column="p_qtsy"    />
+        <result property="pTzsy"    column="p_tzsy"    />
+        <result property="pYylr"    column="p_yylr"    />
+        <result property="pYywsr"    column="p_yywsr"    />
+        <result property="pYywzc"    column="p_yywzc"    />
+        <result property="pLrze"    column="p_lrze"    />
+        <result property="pJlr"    column="p_jlr"    />
+        <result property="pKjq"    column="p_kjq"    />
+        <result property="pKjnd"    column="p_kjnd"    />
+    </resultMap>
+
+    <sql id="selectProfitVo">
+        select id, p_yyzsr, p_yysr, p_yyzcb, p_yycb, p_clf, p_wxf, p_sjjfj, p_glfy, p_bgf, p_hyf, p_ywzdf, p_clfy, p_lxfy, p_lxsr, p_cwfy, p_qtsy, p_tzsy, p_yylr, p_yywsr, p_yywzc, p_lrze, p_jlr from profit_2020
+    </sql>
+
+    <select id="selectProfitList" parameterType="com.why.project.entity.Profit" resultMap="ProfitResult">
+        <include refid="selectProfitVo"/>
+        <where>  
+            <if test="pYyzsr != null "> and p_yyzsr = #{pYyzsr}</if>
+            <if test="pYysr != null "> and p_yysr = #{pYysr}</if>
+            <if test="pYyzcb != null "> and p_yyzcb = #{pYyzcb}</if>
+            <if test="pYycb != null "> and p_yycb = #{pYycb}</if>
+            <if test="pClf != null "> and p_clf = #{pClf}</if>
+            <if test="pWxf != null "> and p_wxf = #{pWxf}</if>
+            <if test="pSjjfj != null "> and p_sjjfj = #{pSjjfj}</if>
+            <if test="pGlfy != null "> and p_glfy = #{pGlfy}</if>
+            <if test="pBgf != null "> and p_bgf = #{pBgf}</if>
+            <if test="pHyf != null "> and p_hyf = #{pHyf}</if>
+            <if test="pYwzdf != null "> and p_ywzdf = #{pYwzdf}</if>
+            <if test="pClfy != null "> and p_clfy = #{pClfy}</if>
+            <if test="pLxfy != null "> and p_lxfy = #{pLxfy}</if>
+            <if test="pLxsr != null "> and p_lxsr = #{pLxsr}</if>
+            <if test="pCwfy != null "> and p_cwfy = #{pCwfy}</if>
+            <if test="pQtsy != null "> and p_qtsy = #{pQtsy}</if>
+            <if test="pTzsy != null "> and p_tzsy = #{pTzsy}</if>
+            <if test="pYylr != null "> and p_yylr = #{pYylr}</if>
+            <if test="pYywsr != null "> and p_yywsr = #{pYywsr}</if>
+            <if test="pYywzc != null "> and p_yywzc = #{pYywzc}</if>
+            <if test="pLrze != null "> and p_lrze = #{pLrze}</if>
+            <if test="pJlr != null "> and p_jlr = #{pJlr}</if>
+        </where>
+    </select>
+    
+    <select id="selectProfitById" parameterType="Long" resultMap="ProfitResult">
+        <include refid="selectProfitVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertProfit" parameterType="com.why.project.entity.Profit" useGeneratedKeys="true" keyProperty="id">
+        insert into profit_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pYyzsr != null ">p_yyzsr,</if>
+            <if test="pYysr != null ">p_yysr,</if>
+            <if test="pYyzcb != null ">p_yyzcb,</if>
+            <if test="pYycb != null ">p_yycb,</if>
+            <if test="pClf != null ">p_clf,</if>
+            <if test="pWxf != null ">p_wxf,</if>
+            <if test="pSjjfj != null ">p_sjjfj,</if>
+            <if test="pGlfy != null ">p_glfy,</if>
+            <if test="pBgf != null ">p_bgf,</if>
+            <if test="pHyf != null ">p_hyf,</if>
+            <if test="pYwzdf != null ">p_ywzdf,</if>
+            <if test="pClfy != null ">p_clfy,</if>
+            <if test="pLxfy != null ">p_lxfy,</if>
+            <if test="pLxsr != null ">p_lxsr,</if>
+            <if test="pCwfy != null ">p_cwfy,</if>
+            <if test="pQtsy != null ">p_qtsy,</if>
+            <if test="pTzsy != null ">p_tzsy,</if>
+            <if test="pYylr != null ">p_yylr,</if>
+            <if test="pYywsr != null ">p_yywsr,</if>
+            <if test="pYywzc != null ">p_yywzc,</if>
+            <if test="pLrze != null ">p_lrze,</if>
+            <if test="pJlr != null ">p_jlr,</if>
+            <if test="pKjq != null ">p_kjq,</if>
+            <if test="pKjnd != null ">p_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pYyzsr != null ">#{pYyzsr},</if>
+            <if test="pYysr != null ">#{pYysr},</if>
+            <if test="pYyzcb != null ">#{pYyzcb},</if>
+            <if test="pYycb != null ">#{pYycb},</if>
+            <if test="pClf != null ">#{pClf},</if>
+            <if test="pWxf != null ">#{pWxf},</if>
+            <if test="pSjjfj != null ">#{pSjjfj},</if>
+            <if test="pGlfy != null ">#{pGlfy},</if>
+            <if test="pBgf != null ">#{pBgf},</if>
+            <if test="pHyf != null ">#{pHyf},</if>
+            <if test="pYwzdf != null ">#{pYwzdf},</if>
+            <if test="pClfy != null ">#{pClfy},</if>
+            <if test="pLxfy != null ">#{pLxfy},</if>
+            <if test="pLxsr != null ">#{pLxsr},</if>
+            <if test="pCwfy != null ">#{pCwfy},</if>
+            <if test="pQtsy != null ">#{pQtsy},</if>
+            <if test="pTzsy != null ">#{pTzsy},</if>
+            <if test="pYylr != null ">#{pYylr},</if>
+            <if test="pYywsr != null ">#{pYywsr},</if>
+            <if test="pYywzc != null ">#{pYywzc},</if>
+            <if test="pLrze != null ">#{pLrze},</if>
+            <if test="pJlr != null ">#{pJlr},</if>
+            <if test="pKjq != null ">#{pKjq},</if>
+            <if test="pKjnd != null ">#{pKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateProfit" parameterType="com.why.project.entity.Profit">
+        update profit_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="pYyzsr != null ">p_yyzsr = #{pYyzsr},</if>
+            <if test="pYysr != null ">p_yysr = #{pYysr},</if>
+            <if test="pYyzcb != null ">p_yyzcb = #{pYyzcb},</if>
+            <if test="pYycb != null ">p_yycb = #{pYycb},</if>
+            <if test="pClf != null ">p_clf = #{pClf},</if>
+            <if test="pWxf != null ">p_wxf = #{pWxf},</if>
+            <if test="pSjjfj != null ">p_sjjfj = #{pSjjfj},</if>
+            <if test="pGlfy != null ">p_glfy = #{pGlfy},</if>
+            <if test="pBgf != null ">p_bgf = #{pBgf},</if>
+            <if test="pHyf != null ">p_hyf = #{pHyf},</if>
+            <if test="pYwzdf != null ">p_ywzdf = #{pYwzdf},</if>
+            <if test="pClfy != null ">p_clfy = #{pClfy},</if>
+            <if test="pLxfy != null ">p_lxfy = #{pLxfy},</if>
+            <if test="pLxsr != null ">p_lxsr = #{pLxsr},</if>
+            <if test="pCwfy != null ">p_cwfy = #{pCwfy},</if>
+            <if test="pQtsy != null ">p_qtsy = #{pQtsy},</if>
+            <if test="pTzsy != null ">p_tzsy = #{pTzsy},</if>
+            <if test="pYylr != null ">p_yylr = #{pYylr},</if>
+            <if test="pYywsr != null ">p_yywsr = #{pYywsr},</if>
+            <if test="pYywzc != null ">p_yywzc = #{pYywzc},</if>
+            <if test="pLrze != null ">p_lrze = #{pLrze},</if>
+            <if test="pJlr != null ">p_jlr = #{pJlr},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProfitById" parameterType="com.why.project.entity.AssetLiability">
+        delete from profit_2020
+        where p_kjq = #{pKjq}
+        and p_kjnd = #{pKjnd}
+    </delete>
+
+    <delete id="deleteProfitByIds" parameterType="String">
+        delete from profit_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

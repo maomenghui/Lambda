@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.ZwkmyeMapper">
+    <resultMap type="com.why.project.entity.Zwkmye2020" id="Zwkmye2020Result">
+        <result property="zwkmyeDwbh" column="zwkmye_dwbh"/>
+        <result property="zwkmyeKmbh" column="zwkmye_kmbh"/>
+        <result property="zwkmyeJffs" column="zwkmye_jffs"/>
+        <result property="zwkmyeDffs" column="zwkmye_dffs"/>
+        <result property="zwkmyeJflj" column="zwkmye_jflj"/>
+        <result property="zwkmyeDflj" column="zwkmye_dflj"/>
+        <result property="zwkmyeDqye" column="zwkmye_dqye"/>
+        <result property="zwkmyeKjq" column="zwkmye_kjq"/>
+        <result property="zwkmyeKjnd" column="zwkmye_kjnd"/>
+        <result property="zwkmyeNcye" column="zwkmye_ncye"/>
+    </resultMap>
+    <sql id="selectZwkmye2020Vo">
+        select zwkmye_dwbh, zwkmye_kmbh, zwkmye_jffs, zwkmye_dffs, zwkmye_jflj, zwkmye_dflj, zwkmye_dqye, zwkmye_kjq, zwkmye_kjnd, zwkmye_ncye from zwkmye_2020
+    </sql>
+
+    <select id="selectZwkmye2020List" parameterType="com.why.project.entity.Zwkmye2020" resultMap="Zwkmye2020Result">
+        <include refid="selectZwkmye2020Vo"/>
+        <where>  
+            <if test="zwkmyeDwbh != null  and zwkmyeDwbh != ''"> and zwkmye_dwbh = #{zwkmyeDwbh}</if>
+            <if test="zwkmyeKmbh != null  and zwkmyeKmbh != ''"> and zwkmye_kmbh = #{zwkmyeKmbh}</if>
+        </where>
+    </select>
+    
+    <select id="selectZwkmye2020ById" parameterType="String" resultMap="Zwkmye2020Result">
+        <include refid="selectZwkmye2020Vo"/>
+        where zwkmye_kmbh = #{zwkmyeKmbh}
+    </select>
+    
+    <select id="selectGather" parameterType="String"  resultType="java.math.BigDecimal">
+        select SUM(zwkmye_dqye) zwkmye_dqye from zwkmye_2020 where zwkmye_kmbh = #{zwkmyeKmbh} and zwkmye_kjq = #{zwkmyeKjq}
+    </select>
+
+    <select id="selectBorrowGather" parameterType="String"  resultType="java.math.BigDecimal">
+        select SUM(zwkmye_jffs) zwkmye_jffs from zwkmye_2020 where zwkmye_kmbh = #{zwkmyeKmbh} and zwkmye_kjq = #{zwkmyeKjq}
+    </select>
+
+    <select id="selectLoanGather" parameterType="String"  resultType="java.math.BigDecimal">
+        select SUM(zwkmye_dffs) zwkmye_dffs from zwkmye_2020 where zwkmye_kmbh = #{zwkmyeKmbh} and zwkmye_kjq = #{zwkmyeKjq}
+    </select>
+        
+    <insert id="insertZwkmye2020" parameterType="com.why.project.entity.Zwkmye2020">
+        insert into zwkmye_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="zwkmyeDwbh != null  and zwkmyeDwbh != ''">zwkmye_dwbh,</if>
+            <if test="zwkmyeKmbh != null  and zwkmyeKmbh != ''">zwkmye_kmbh,</if>
+            <if test="zwkmyeJffs != null  and zwkmyeJffs != ''">zwkmye_jffs,</if>
+            <if test="zwkmyeDffs != null  and zwkmyeDffs != ''">zwkmye_dffs,</if>
+            <if test="zwkmyeJflj != null  and zwkmyeJflj != ''">zwkmye_jflj,</if>
+            <if test="zwkmyeDflj != null  and zwkmyeDflj != ''">zwkmye_dflj,</if>
+            <if test="zwkmyeDqye != null ">zwkmye_dqye,</if>
+            <if test="zwkmyeKjq != null  and zwkmyeKjq != ''">zwkmye_kjq,</if>
+            <if test="zwkmyeKjnd != null  and zwkmyeKjnd != ''">zwkmye_kjnd,</if>
+            <if test="zwkmyeNcye != null ">zwkmye_ncye,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="zwkmyeDwbh != null  and zwkmyeDwbh != ''">#{zwkmyeDwbh},</if>
+            <if test="zwkmyeKmbh != null  and zwkmyeKmbh != ''">#{zwkmyeKmbh},</if>
+            <if test="zwkmyeJffs != null  and zwkmyeJffs != ''">#{zwkmyeJffs},</if>
+            <if test="zwkmyeDffs != null  and zwkmyeDffs != ''">#{zwkmyeDffs},</if>
+            <if test="zwkmyeJflj != null  and zwkmyeJflj != ''">#{zwkmyeJflj},</if>
+            <if test="zwkmyeDflj != null  and zwkmyeDflj != ''">#{zwkmyeDflj},</if>
+            <if test="zwkmyeDqye != null ">#{zwkmyeDqye},</if>
+            <if test="zwkmyeKjq != null  and zwkmyeKjq != ''">#{zwkmyeKjq},</if>
+            <if test="zwkmyeKjnd != null  and zwkmyeKjnd != ''">#{zwkmyeKjnd},</if>
+            <if test="zwkmyeNcye != null ">#{zwkmyeNcye},</if>
+         </trim>
+    </insert>
+
+    <update id="updateZwkmye2020" parameterType="com.why.project.entity.Zwkmye2020">
+        update zwkmye_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="zwkmyeKmbh != null  and zwkmyeKmbh != ''">zwkmye_kmbh = #{zwkmyeKmbh},</if>
+            <if test="zwkmyeJffs != null  and zwkmyeJffs != ''">zwkmye_jffs = #{zwkmyeJffs},</if>
+            <if test="zwkmyeDffs != null  and zwkmyeDffs != ''">zwkmye_dffs = #{zwkmyeDffs},</if>
+            <if test="zwkmyeJflj != null  and zwkmyeJflj != ''">zwkmye_jflj = #{zwkmyeJflj},</if>
+            <if test="zwkmyeDflj != null  and zwkmyeDflj != ''">zwkmye_dflj = #{zwkmyeDflj},</if>
+            <if test="zwkmyeDqye != null ">zwkmye_dqye = #{zwkmyeDqye},</if>
+            <if test="zwkmyeKjq != null  and zwkmyeKjq != ''">zwkmye_kjq = #{zwkmyeKjq},</if>
+            <if test="zwkmyeKjnd != null  and zwkmyeKjnd != ''">zwkmye_kjnd = #{zwkmyeKjnd},</if>
+            <if test="zwkmyeNcye != null ">zwkmye_ncye = #{zwkmyeNcye},</if>
+        </trim>
+        where zwkmye_dwbh = #{zwkmyeDwbh}
+    </update>
+
+    <delete id="deleteZwkmye2020ById" parameterType="String">
+        delete from zwkmye_2020 where zwkmye_dwbh = #{zwkmyeDwbh}
+    </delete>
+
+    <delete id="deleteZwkmye2020ByIds" parameterType="String">
+        delete from zwkmye_2020 where zwkmye_dwbh in 
+        <foreach item="zwkmyeDwbh" collection="array" open="(" separator="," close=")">
+            #{zwkmyeDwbh}
+        </foreach>
+    </delete>
+    
+</mapper>

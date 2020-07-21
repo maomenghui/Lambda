@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.PersonnelLabourMapper">
+    
+    <resultMap type="com.why.project.entity.PersonnelLabour" id="PersonnelLabourResult">
+        <result property="id"    column="id"    />
+        <result property="plCyrybc"    column="pl_cyrybc"    />
+        <result property="plZgzggzze"    column="pl_zgzggzze"    />
+        <result property="plLwpqrybc"    column="pl_lwpqrybc"    />
+        <result property="plQtryldbc"    column="pl_qtryldbc"    />
+        <result property="plShbxfy"    column="pl_shbxfy"    />
+        <result property="plZgflf"    column="pl_zgflf"    />
+        <result property="plJyjf"    column="pl_jyjf"    />
+        <result property="plZffy"    column="pl_zffy"    />
+        <result property="plGjj"    column="pl_gjj"    />
+        <result property="plGhjf"    column="pl_ghjf"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectPersonnelLabourVo">
+        select id, pl_cyrybc, pl_zgzggzze, pl_lwpqrybc, pl_qtryldbc, pl_shbxfy, pl_zgflf, pl_jyjf, pl_zffy, pl_gjj, pl_ghjf, cf_kjq, cf_kjnd from personnel_labour_2020
+    </sql>
+
+    <select id="selectPersonnelLabourList" parameterType="com.why.project.entity.PersonnelLabour" resultMap="PersonnelLabourResult">
+        <include refid="selectPersonnelLabourVo"/>
+        <where>  
+            <if test="plCyrybc != null "> and pl_cyrybc = #{plCyrybc}</if>
+            <if test="plZgzggzze != null "> and pl_zgzggzze = #{plZgzggzze}</if>
+            <if test="plLwpqrybc != null "> and pl_lwpqrybc = #{plLwpqrybc}</if>
+            <if test="plQtryldbc != null "> and pl_qtryldbc = #{plQtryldbc}</if>
+            <if test="plShbxfy != null "> and pl_shbxfy = #{plShbxfy}</if>
+            <if test="plZgflf != null "> and pl_zgflf = #{plZgflf}</if>
+            <if test="plJyjf != null "> and pl_jyjf = #{plJyjf}</if>
+            <if test="plZffy != null "> and pl_zffy = #{plZffy}</if>
+            <if test="plGjj != null "> and pl_gjj = #{plGjj}</if>
+            <if test="plGhjf != null "> and pl_ghjf = #{plGhjf}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectPersonnelLabourById" parameterType="Long" resultMap="PersonnelLabourResult">
+        <include refid="selectPersonnelLabourVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPersonnelLabour" parameterType="com.why.project.entity.PersonnelLabour" useGeneratedKeys="true" keyProperty="id">
+        insert into personnel_labour_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="plCyrybc != null ">pl_cyrybc,</if>
+            <if test="plZgzggzze != null ">pl_zgzggzze,</if>
+            <if test="plLwpqrybc != null ">pl_lwpqrybc,</if>
+            <if test="plQtryldbc != null ">pl_qtryldbc,</if>
+            <if test="plShbxfy != null ">pl_shbxfy,</if>
+            <if test="plZgflf != null ">pl_zgflf,</if>
+            <if test="plJyjf != null ">pl_jyjf,</if>
+            <if test="plZffy != null ">pl_zffy,</if>
+            <if test="plGjj != null ">pl_gjj,</if>
+            <if test="plGhjf != null ">pl_ghjf,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="plCyrybc != null ">#{plCyrybc},</if>
+            <if test="plZgzggzze != null ">#{plZgzggzze},</if>
+            <if test="plLwpqrybc != null ">#{plLwpqrybc},</if>
+            <if test="plQtryldbc != null ">#{plQtryldbc},</if>
+            <if test="plShbxfy != null ">#{plShbxfy},</if>
+            <if test="plZgflf != null ">#{plZgflf},</if>
+            <if test="plJyjf != null ">#{plJyjf},</if>
+            <if test="plZffy != null ">#{plZffy},</if>
+            <if test="plGjj != null ">#{plGjj},</if>
+            <if test="plGhjf != null ">#{plGhjf},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePersonnelLabour" parameterType="com.why.project.entity.PersonnelLabour">
+        update personnel_labour_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="plCyrybc != null ">pl_cyrybc = #{plCyrybc},</if>
+            <if test="plZgzggzze != null ">pl_zgzggzze = #{plZgzggzze},</if>
+            <if test="plLwpqrybc != null ">pl_lwpqrybc = #{plLwpqrybc},</if>
+            <if test="plQtryldbc != null ">pl_qtryldbc = #{plQtryldbc},</if>
+            <if test="plShbxfy != null ">pl_shbxfy = #{plShbxfy},</if>
+            <if test="plZgflf != null ">pl_zgflf = #{plZgflf},</if>
+            <if test="plJyjf != null ">pl_jyjf = #{plJyjf},</if>
+            <if test="plZffy != null ">pl_zffy = #{plZffy},</if>
+            <if test="plGjj != null ">pl_gjj = #{plGjj},</if>
+            <if test="plGhjf != null ">pl_ghjf = #{plGhjf},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePersonnelLabourById" parameterType="com.why.project.entity.PersonnelLabour">
+        delete from personnel_labour_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deletePersonnelLabourByIds" parameterType="String">
+        delete from personnel_labour_2020 where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

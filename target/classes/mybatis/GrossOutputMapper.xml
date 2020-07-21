@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.GrossOutputMapper">
+    
+    <resultMap type="com.why.project.entity.GrossOutput" id="GrossOutputResult">
+        <result property="id"    column="id"    />
+        <result property="goZcc"    column="go_zcc"    />
+        <result property="goKycbjflj"    column="go_kycbjflj"    />
+        <result property="goGdzczj"    column="go_gdzczj"    />
+        <result property="goYyyy"    column="go_yyyy"    />
+        <result property="goTzlr"    column="go_tzlr"    />
+        <result property="goTzsy"    column="go_tzsy"    />
+        <result property="goZcczsy"    column="go_zcczsy"    />
+        <result property="goQtsy"    column="go_qtsy"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectGrossOutputVo">
+        select id, go_zcc, go_kycbjflj, go_gdzczj, go_yyyy, go_tzlr, go_tzsy, go_zcczsy, go_qtsy, cf_kjq, cf_kjnd from gross_output_2020
+    </sql>
+
+    <select id="selectGrossOutputList" parameterType="com.why.project.entity.GrossOutput" resultMap="GrossOutputResult">
+        <include refid="selectGrossOutputVo"/>
+        <where>  
+            <if test="goZcc != null "> and go_zcc = #{goZcc}</if>
+            <if test="goKycbjflj != null "> and go_kycbjflj = #{goKycbjflj}</if>
+            <if test="goGdzczj != null "> and go_gdzczj = #{goGdzczj}</if>
+            <if test="goYyyy != null "> and go_yyyy = #{goYyyy}</if>
+            <if test="goTzlr != null "> and go_tzlr = #{goTzlr}</if>
+            <if test="goTzsy != null "> and go_tzsy = #{goTzsy}</if>
+            <if test="goZcczsy != null "> and go_zcczsy = #{goZcczsy}</if>
+            <if test="goQtsy != null "> and go_qtsy = #{goQtsy}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectGrossOutputById" parameterType="Long" resultMap="GrossOutputResult">
+        <include refid="selectGrossOutputVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertGrossOutput" parameterType="com.why.project.entity.GrossOutput" useGeneratedKeys="true" keyProperty="id">
+        insert into gross_output_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goZcc != null ">go_zcc,</if>
+            <if test="goKycbjflj != null ">go_kycbjflj,</if>
+            <if test="goGdzczj != null ">go_gdzczj,</if>
+            <if test="goYyyy != null ">go_yyyy,</if>
+            <if test="goTzlr != null ">go_tzlr,</if>
+            <if test="goTzsy != null ">go_tzsy,</if>
+            <if test="goZcczsy != null ">go_zcczsy,</if>
+            <if test="goQtsy != null ">go_qtsy,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goZcc != null ">#{goZcc},</if>
+            <if test="goKycbjflj != null ">#{goKycbjflj},</if>
+            <if test="goGdzczj != null ">#{goGdzczj},</if>
+            <if test="goYyyy != null ">#{goYyyy},</if>
+            <if test="goTzlr != null ">#{goTzlr},</if>
+            <if test="goTzsy != null ">#{goTzsy},</if>
+            <if test="goZcczsy != null ">#{goZcczsy},</if>
+            <if test="goQtsy != null ">#{goQtsy},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGrossOutput" parameterType="com.why.project.entity.GrossOutput">
+        update gross_output_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="goZcc != null ">go_zcc = #{goZcc},</if>
+            <if test="goKycbjflj != null ">go_kycbjflj = #{goKycbjflj},</if>
+            <if test="goGdzczj != null ">go_gdzczj = #{goGdzczj},</if>
+            <if test="goYyyy != null ">go_yyyy = #{goYyyy},</if>
+            <if test="goTzlr != null ">go_tzlr = #{goTzlr},</if>
+            <if test="goTzsy != null ">go_tzsy = #{goTzsy},</if>
+            <if test="goZcczsy != null ">go_zcczsy = #{goZcczsy},</if>
+            <if test="goQtsy != null ">go_qtsy = #{goQtsy},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteGrossOutputById" parameterType="com.why.project.entity.GrossOutput">
+        delete from gross_output_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deleteGrossOutputByIds" parameterType="String">
+        delete from gross_output_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

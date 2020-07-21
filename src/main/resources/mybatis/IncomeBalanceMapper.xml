@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.why.project.mapper.IncomeBalanceMapper">
+    
+    <resultMap type="com.why.project.entity.IncomeBalance" id="IncomeBalanceResult">
+        <result property="id"    column="id"    />
+        <result property="ibCzbzsr"    column="ib_czbzsr"    />
+        <result property="ibLtxfy"    column="ib_ltxfy"    />
+        <result property="ibKysr"    column="ib_kysr"    />
+        <result property="ibQtywsr"    column="ib_qtywsr"    />
+        <result property="ibQtsr"    column="ib_qtsr"    />
+        <result property="ibLxsr"    column="ib_lxsr"    />
+        <result property="ibCzbzzc"    column="ib_czbzzc"    />
+        <result property="ibKycbzc"    column="ib_kycbzc"    />
+        <result property="ibJscbzc"    column="ib_jscbzc"    />
+        <result property="ibQtywcb"    column="ib_qtywcb"    />
+        <result property="ibQtzc"    column="ib_qtzc"    />
+        <result property="cfKjq"    column="cf_kjq"    />
+        <result property="cfKjnd"    column="cf_kjnd"    />
+    </resultMap>
+
+    <sql id="selectIncomeBalanceVo">
+        select id, ib_czbzsr, ib_ltxfy, ib_kysr, ib_qtywsr, ib_qtsr, ib_lxsr, ib_czbzzc, ib_kycbzc, ib_jscbzc, ib_qtywcb,
+        ib_qtzc, cf_kjq, cf_kjnd from income_balance_2020
+    </sql>
+
+    <select id="selectIncomeBalanceList" parameterType="com.why.project.entity.IncomeBalance" resultMap="IncomeBalanceResult">
+        <include refid="selectIncomeBalanceVo"/>
+        <where>  
+            <if test="ibCzbzsr != null "> and ib_czbzsr = #{ibCzbzsr}</if>
+            <if test="ibLtxfy != null "> and ib_ltxfy = #{ibLtxfy}</if>
+            <if test="ibKysr != null "> and ib_kysr = #{ibKysr}</if>
+            <if test="ibQtywsr != null "> and ib_qtywsr = #{ibQtywsr}</if>
+            <if test="ibQtsr != null "> and ib_qtsr = #{ibQtsr}</if>
+            <if test="ibLxsr != null "> and ib_lxsr = #{ibLxsr}</if>
+            <if test="ibCzbzzc != null "> and ib_czbzzc = #{ibCzbzzc}</if>
+            <if test="ibKycbzc != null "> and ib_kycbzc = #{ibKycbzc}</if>
+            <if test="ibJscbzc != null "> and ib_jscbzc = #{ibJscbzc}</if>
+            <if test="ibQtywcb != null "> and ib_qtywcb = #{ibQtywcb}</if>
+            <if test="ibQtzc != null "> and ib_qtzc = #{ibQtzc}</if>
+            <if test="cfKjq != null  and cfKjq != ''"> and cf_kjq = #{cfKjq}</if>
+            <if test="cfKjnd != null  and cfKjnd != ''"> and cf_kjnd = #{cfKjnd}</if>
+        </where>
+    </select>
+    
+    <select id="selectIncomeBalanceById" parameterType="Long" resultMap="IncomeBalanceResult">
+        <include refid="selectIncomeBalanceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertIncomeBalance" parameterType="com.why.project.entity.IncomeBalance" useGeneratedKeys="true" keyProperty="id">
+        insert into income_balance_2020
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ibCzbzsr != null ">ib_czbzsr,</if>
+            <if test="ibLtxfy != null ">ib_ltxfy,</if>
+            <if test="ibKysr != null ">ib_kysr,</if>
+            <if test="ibQtywsr != null ">ib_qtywsr,</if>
+            <if test="ibQtsr != null ">ib_qtsr,</if>
+            <if test="ibLxsr != null ">ib_lxsr,</if>
+            <if test="ibCzbzzc != null ">ib_czbzzc,</if>
+            <if test="ibKycbzc != null ">ib_kycbzc,</if>
+            <if test="ibJscbzc != null ">ib_jscbzc,</if>
+            <if test="ibQtywcb != null ">ib_qtywcb,</if>
+            <if test="ibQtzc != null ">ib_qtzc,</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq,</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ibCzbzsr != null ">#{ibCzbzsr},</if>
+            <if test="ibLtxfy != null ">#{ibLtxfy},</if>
+            <if test="ibKysr != null ">#{ibKysr},</if>
+            <if test="ibQtywsr != null ">#{ibQtywsr},</if>
+            <if test="ibQtsr != null ">#{ibQtsr},</if>
+            <if test="ibLxsr != null ">#{ibLxsr},</if>
+            <if test="ibCzbzzc != null ">#{ibCzbzzc},</if>
+            <if test="ibKycbzc != null ">#{ibKycbzc},</if>
+            <if test="ibJscbzc != null ">#{ibJscbzc},</if>
+            <if test="ibQtywcb != null ">#{ibQtywcb},</if>
+            <if test="ibQtzc != null ">#{ibQtzc},</if>
+            <if test="cfKjq != null  and cfKjq != ''">#{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">#{cfKjnd},</if>
+         </trim>
+    </insert>
+
+    <update id="updateIncomeBalance" parameterType="com.why.project.entity.IncomeBalance">
+        update income_balance_2020
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ibCzbzsr != null ">ib_czbzsr = #{ibCzbzsr},</if>
+            <if test="ibLtxfy != null ">ib_ltxfy = #{ibLtxfy},</if>
+            <if test="ibKysr != null ">ib_kysr = #{ibKysr},</if>
+            <if test="ibQtywsr != null ">ib_qtywsr = #{ibQtywsr},</if>
+            <if test="ibQtsr != null ">ib_qtsr = #{ibQtsr},</if>
+            <if test="ibLxsr != null ">ib_lxsr = #{ibLxsr},</if>
+            <if test="ibCzbzzc != null ">ib_czbzzc = #{ibCzbzzc},</if>
+            <if test="ibKycbzc != null ">ib_kycbzc = #{ibKycbzc},</if>
+            <if test="ibJscbzc != null ">ib_jscbzc = #{ibJscbzc},</if>
+            <if test="ibQtywcb != null ">ib_qtywcb = #{ibQtywcb},</if>
+            <if test="ibQtzc != null ">ib_qtzc = #{ibQtzc},</if>
+            <if test="cfKjq != null  and cfKjq != ''">cf_kjq = #{cfKjq},</if>
+            <if test="cfKjnd != null  and cfKjnd != ''">cf_kjnd = #{cfKjnd},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteIncomeBalanceById" parameterType="com.why.project.entity.IncomeBalance">
+        delete from income_balance_2020
+        where cf_kjq = #{cfKjq}
+        and cf_kjnd = #{cfKjnd}
+    </delete>
+
+    <delete id="deleteIncomeBalanceByIds" parameterType="String">
+        delete from income_balance_2020 where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
