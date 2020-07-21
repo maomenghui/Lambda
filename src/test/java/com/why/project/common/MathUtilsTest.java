@@ -57,4 +57,8 @@ public class MathUtilsTest extends TestCase {
         });
     }
 
+    public void test() {
+
+    }
+
 }
